@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 class CustomTextInput extends StatelessWidget {
+  final String label;
   final bool autofocus;
   final double heightCursor;
   final TextInputType keyboardType;
   final TextAlign alignText;
-  final bool shadow;
+  final bool password;
 
-  const CustomTextInput({super.key, 
+  const CustomTextInput(this.label, {super.key,
       this.autofocus = false,
       required this.heightCursor,
       required this.keyboardType,
-      required this.alignText, 
-      required this.shadow 
+      required this.alignText,
+      this.password = false,
     });
 
   @override
@@ -22,7 +23,8 @@ class CustomTextInput extends StatelessWidget {
       cursorHeight: heightCursor,
       keyboardType: keyboardType,
       textAlign: alignText,
-      obscureText: true,
+      obscureText: password,
+      decoration: InputDecoration(labelText: label),
     );
   }
 }

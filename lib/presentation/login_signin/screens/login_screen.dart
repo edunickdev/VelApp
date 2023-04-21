@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vel_app/presentation/login_signin/wodgets/custom_button.dart';
+import 'package:vel_app/presentation/login_signin/widgets/custom_text_input.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -7,6 +7,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Log In')),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
         child: Column(
@@ -21,22 +22,25 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const CustomTextInput(
+                    'User email',
                     autofocus: true,
                     heightCursor: 25,
                     keyboardType: TextInputType.emailAddress,
                     alignText: TextAlign.center,
-                    shadow: false,
                   ),
                   const CustomTextInput(
-                      autofocus: true,
-                      heightCursor: 25,
-                      keyboardType: TextInputType.text,
-                      alignText: TextAlign.center,
-                      shadow: true),
+                    'Your password',
+                    heightCursor: 25,
+                    keyboardType: TextInputType.text,
+                    alignText: TextAlign.center,
+                    password: true,
+                  ),
                   SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.popAndPushNamed(context, '/home');
+                        },
                         child: const Text(
                           'Log in',
                           style: TextStyle(
@@ -46,7 +50,15 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Text('new here? register here', style: TextStyle(fontSize: 25),)
+            OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/signin');
+              },
+              child: const Text(
+                'new here? register here',
+                style: TextStyle(fontSize: 25),
+              ),
+            ),
           ],
         ),
       ),
