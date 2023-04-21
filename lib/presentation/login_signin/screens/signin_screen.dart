@@ -20,30 +20,42 @@ class SignInScreen extends StatelessWidget {
             const CustomTextInput('Your name',
                 heightCursor: 25,
                 keyboardType: TextInputType.name,
-                alignText: TextAlign.center),
+                alignText: TextAlign.center,
+                customIcon: Icon(Icons.person),
+                ),
             const SizedBox(height: 15,),
             const CustomTextInput(
                 'Your email',
                 heightCursor: 25,
                 keyboardType: TextInputType.emailAddress,
-                alignText: TextAlign.center),
+                alignText: TextAlign.center,
+                customIcon: Icon(Icons.email),
+                ),
             const SizedBox(height: 15,),
             const CustomTextInput(
                 'Your password',
                 heightCursor: 25,
                 keyboardType: TextInputType.name,
-                alignText: TextAlign.center),
+                alignText: TextAlign.center,
+                customIcon: Icon(Icons.password_outlined),
+                password: true,
+                ),
             const SizedBox(height: 15,),
             const CustomTextInput(
                 'Confirm your password',
                 heightCursor: 25,
                 keyboardType: TextInputType.name,
-                alignText: TextAlign.center),
+                alignText: TextAlign.center,
+                customIcon: Icon(Icons.password_outlined),
+                password: true,
+                ),
             const SizedBox(height: 30,),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.popAndPushNamed(context, '/login');
+                  },
                   icon: const Icon(Icons.save),
                   label: const Text('Register', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),)),
             )

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 1).theme(),
+      theme: AppTheme(selectedColor: 2).theme(),
       title: 'VelApp',
       initialRoute: '/home',
       routes: {

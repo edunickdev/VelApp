@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "138240278887",
+    "project_id": "velapp-aa7eb",
+    "storage_bucket": "velapp-aa7eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138240278887:android:50bea9fc976d5e1f696fc2",
+        "android_client_info": {
+          "package_name": "com.example.vel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138240278887-l5va5qigipdu397goc1icgsctuee87in.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAarz9_XPZmHiHfFzZwPfnqPY3DMxrBmqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138240278887-l5va5qigipdu397goc1icgsctuee87in.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

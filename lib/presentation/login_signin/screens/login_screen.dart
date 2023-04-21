@@ -27,6 +27,7 @@ class LoginScreen extends StatelessWidget {
                     heightCursor: 25,
                     keyboardType: TextInputType.emailAddress,
                     alignText: TextAlign.center,
+                    customIcon: Icon(Icons.email_outlined),
                   ),
                   const CustomTextInput(
                     'Your password',
@@ -34,12 +35,16 @@ class LoginScreen extends StatelessWidget {
                     keyboardType: TextInputType.text,
                     alignText: TextAlign.center,
                     password: true,
+                    customIcon: Icon(Icons.password_outlined),
                   ),
+                  const SizedBox(height: 20,),
                   SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.popAndPushNamed(context, '/home');
+                          // una vez configurada la autenticación debería
+                          // ser popAndPushNamed
+                          Navigator.pushNamed(context, '/home');
                         },
                         child: const Text(
                           'Log in',
@@ -51,12 +56,18 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             OutlinedButton(
+              style: ButtonStyle(
+                  alignment: Alignment.center,
+                  backgroundColor:
+                      MaterialStatePropertyAll(Theme.of(context).hoverColor)),
               onPressed: () {
                 Navigator.pushNamed(context, '/signin');
               },
               child: const Text(
-                'new here? register here',
-                style: TextStyle(fontSize: 25),
+                'new here? register.',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
               ),
             ),
           ],
