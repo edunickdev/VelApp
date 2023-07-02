@@ -37,37 +37,40 @@ class LoginScreen extends StatelessWidget {
                     password: true,
                     customIcon: Icon(Icons.password_outlined),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // una vez configurada la autenticación debería
-                          // ser popAndPushNamed
-                          Navigator.pushNamed(context, '/home');
-                        },
-                        child: const Text(
-                          'Log in',
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
-                      ))
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // una vez configurada la autenticación debería
+                        // ser popAndPushNamed
+                        Navigator.pushNamed(context, '/home');
+                      },
+                      child: const Text(
+                        'Log in',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  OutlinedButton(
+                    style: ButtonStyle(
+                        alignment: Alignment.center,
+                        backgroundColor: MaterialStatePropertyAll(
+                            Theme.of(context).hoverColor)),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/signin');
+                    },
+                    child: const Text(
+                      'new here? register.',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
                 ],
-              ),
-            ),
-            OutlinedButton(
-              style: ButtonStyle(
-                  alignment: Alignment.center,
-                  backgroundColor:
-                      MaterialStatePropertyAll(Theme.of(context).hoverColor)),
-              onPressed: () {
-                Navigator.pushNamed(context, '/signin');
-              },
-              child: const Text(
-                'new here? register.',
-                style: TextStyle(
-                  fontSize: 25,
-                ),
               ),
             ),
           ],
