@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+
+  static String name = 'home-page';
+
   const HomePage({
     super.key,
   });

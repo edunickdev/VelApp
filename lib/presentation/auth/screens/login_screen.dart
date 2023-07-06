@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:vel_app/presentation/login_signin/widgets/custom_text_input.dart';
+import 'package:go_router/go_router.dart';
+import 'package:vel_app/presentation/shared/widgets/custom_text_input.dart';
 
 class LoginScreen extends StatelessWidget {
+
+  static String name = '/login';
+  
   const LoginScreen({super.key});
 
   @override
@@ -21,32 +25,32 @@ class LoginScreen extends StatelessWidget {
             Form(
               child: Column(
                 children: [
-                  const CustomTextInput(
+                  CustomTextInput(
                     'User email',
                     autofocus: true,
                     heightCursor: 25,
                     keyboardType: TextInputType.emailAddress,
                     alignText: TextAlign.center,
                     customIcon: Icon(Icons.email_outlined),
+                    validations: [],
                   ),
-                  const CustomTextInput(
+                  CustomTextInput(
                     'Your password',
                     heightCursor: 25,
                     keyboardType: TextInputType.text,
                     alignText: TextAlign.center,
                     password: true,
                     customIcon: Icon(Icons.password_outlined),
+                    validations: [],
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20,),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
                         // una vez configurada la autenticación debería
                         // ser popAndPushNamed
-                        Navigator.pushNamed(context, '/home');
+                        context.push('/home-page');
                       },
                       child: const Text(
                         'Log in',
@@ -61,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                         backgroundColor: MaterialStatePropertyAll(
                             Theme.of(context).hoverColor)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/signin');
+                      context.push('/sign-in');
                     },
                     child: const Text(
                       'new here? register.',
