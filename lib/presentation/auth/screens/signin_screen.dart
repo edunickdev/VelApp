@@ -10,6 +10,11 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    TextEditingController? passwordController;
+    TextEditingController? confirmPasswordController;
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In'),
@@ -21,41 +26,57 @@ class SignInScreen extends StatelessWidget {
           children: [
             const Text('Register', style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold ),),
             const SizedBox(height: 30,),
-             CustomTextInput('Your name',
+            const CustomTextInput(
+                'Your name',
                 heightCursor: 25,
                 keyboardType: TextInputType.name,
                 alignText: TextAlign.center,
-                customIcon: const Icon(Icons.person),
-                validations: [],
+                customIcon: Icon(Icons.person),
+                validations: [
+                  maxValidLenght35,
+                  minValidLenght8,
+                ],
                 ),
             const SizedBox(height: 15,),
-             CustomTextInput(
+            const CustomTextInput(
                 'Your email',
                 heightCursor: 25,
                 keyboardType: TextInputType.emailAddress,
                 alignText: TextAlign.center,
-                customIcon: const Icon(Icons.email),
-                validations: [],
+                customIcon: Icon(Icons.email),
+                validations: [
+                  isEmail,
+                ],
                 ),
             const SizedBox(height: 15,),
-             CustomTextInput(
+            CustomTextInput(
                 'Your password',
                 heightCursor: 25,
                 keyboardType: TextInputType.name,
                 alignText: TextAlign.center,
                 customIcon: const Icon(Icons.password_outlined),
                 password: true,
-                validations: [],
+                controller: passwordController,
+                validations: const [
+                  maxValidLenght8,
+                  minValidLenght5,
+                  atLeast1Mayus,
+                  atLeast1Num,
+                  atLeast1SpecialChar
+                ],
                 ),
             const SizedBox(height: 15,),
-             CustomTextInput(
+            CustomTextInput(
                 'Confirm your password',
                 heightCursor: 25,
                 keyboardType: TextInputType.name,
                 alignText: TextAlign.center,
                 customIcon: const Icon(Icons.password_outlined),
                 password: true,
-                validations: [],
+                controller: confirmPasswordController,
+                validations: const [
+                  samePass
+                ],
                 ),
             const SizedBox(height: 30,),
             SizedBox(
