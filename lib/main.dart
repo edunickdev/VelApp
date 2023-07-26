@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       routerConfig: router,
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 2).theme(),
-      title: 'VelApp',    
+      title: 'VelApp',
     );
   }
 }

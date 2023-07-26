@@ -8,7 +8,7 @@ class CustomTextInput extends StatelessWidget {
   final TextAlign alignText;
   final bool password;
   final Icon customIcon;
-  final List<Function> validations;
+  final List<Function>? validations;
   final TextEditingController? controller;
 
   const CustomTextInput(
@@ -18,9 +18,9 @@ class CustomTextInput extends StatelessWidget {
     required this.heightCursor,
     required this.keyboardType,
     required this.alignText,
-    this.password = false, 
+    this.password = false,
     required this.customIcon, 
-    required this.validations, 
+    this.validations, 
     this.controller,
   });
 
@@ -34,7 +34,7 @@ class CustomTextInput extends StatelessWidget {
       obscureText: password,
       decoration: InputDecoration(labelText: label, prefixIcon: customIcon),
       validator: (value) {
-        for (var validation in validationList) {
+        for ( Function validation in validationList ) {
           if (!validation(value)) {
             return 'Invalid input';
           }

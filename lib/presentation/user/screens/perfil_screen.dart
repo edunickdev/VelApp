@@ -1,0 +1,1 @@
+// corresponde a la pantalla donde se mostrara un resumen general de la informacion del paciente, debera ser editable
