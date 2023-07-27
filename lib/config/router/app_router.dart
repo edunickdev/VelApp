@@ -2,11 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:vel_app/presentation/auth/screens/login_screen.dart';
 import 'package:vel_app/presentation/auth/screens/signin_screen.dart';
 import 'package:vel_app/presentation/main/screens/home_page.dart/home_page.dart';
-import 'package:vel_app/presentation/user/screens/basic_info_screen.dart';
-import 'package:vel_app/presentation/user/screens/habits_info_screen.dart';
-import 'package:vel_app/presentation/user/screens/medic_info_screen.dart';
-import 'package:vel_app/presentation/user/screens/new_user_screen.dart';
-import 'package:vel_app/presentation/user/widgets/sections_info.dart';
+import 'package:vel_app/presentation/user/screens/screens_user.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login', 
@@ -34,7 +30,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: InfoBasicScreen.name,
       path: '/basics',
-      builder: (context, state) => InfoBasicScreen(),
+      builder: (context, state) => const InfoBasicScreen(),
     ),
     GoRoute(
       name: InfoMedScreen.name,

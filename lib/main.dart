@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vel_app/config/theme/app_theme.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'config/router/app_router.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const ProviderScope(child: MyApp()));
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

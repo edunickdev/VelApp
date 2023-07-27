@@ -23,7 +23,7 @@ final listInfo = <CustomTile>[
     detalle: 'Información reelevante, importante para tomar decisiones de cara al entrenamiento.',
     ruta: '/medics'),
   CustomTile(
-    titulo: 'Habitos',
+    titulo: 'Hábitos',
     icono: Icons.timeline_rounded,
     detalle: 'Información clave para definir el mejor momento para entrenar.',
     ruta: '/habits'),

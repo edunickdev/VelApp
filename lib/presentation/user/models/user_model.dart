@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-enum Generos { hombre, mujer, indefinido }
+ List<String> generos = [ 'hombre', 'mujer', 'indefinido' ];
 
 
 class User {
@@ -24,7 +24,7 @@ class UserBasicInfo {
   final DateTime fechaNacimiento;
   final double altura;
   final double peso;
-  final Generos genero;
+  final List<String> genero;
   int edad;
 
   UserBasicInfo({required this.genero, required this.fechaNacimiento, required this.altura, required this.peso, required this.edad, required this.foto,});
