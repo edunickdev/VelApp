@@ -7,19 +7,17 @@ import 'package:vel_app/presentation/user/models/user_model.dart';
 import 'package:vel_app/presentation/user/providers/user_providers.dart';
 
 class InfoBasicScreen extends ConsumerWidget {
-
   static String name = 'basics';
 
-  // final String title;pereme
+  // final String title;
 
   const InfoBasicScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final String titleAppbar = ref.watch(titleAppbarProvider);
     final generos = ref.watch(listGenerosProvider);
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(titleAppbar),
@@ -32,11 +30,10 @@ class InfoBasicScreen extends ConsumerWidget {
             child: Column(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: const Card(
-                    child: Icon( Icons.camera_alt_outlined ),
-                  )
-                ) ,
+                    borderRadius: BorderRadius.circular(50),
+                    child: const Card(
+                      child: Icon(Icons.camera_alt_outlined),
+                    )),
                 const CustomTextInput('Ingresa tu altura',
                     heightCursor: 23,
                     keyboardType: TextInputType.number,
@@ -50,17 +47,25 @@ class InfoBasicScreen extends ConsumerWidget {
                 const SizedBox(height: 30),
                 SegmentedButton(
                   segments: const [
-                    ButtonSegment(value: ListaGeneros.masculino, icon: Icon(Icons.man_2_outlined), label: Text('Hombre')),
-                    ButtonSegment(value: ListaGeneros.femenino, icon: Icon(Icons.girl_outlined), label: Text('Mujer')),
+                    ButtonSegment(
+                        value: ListaGeneros.masculino,
+                        icon: Icon(Icons.man_2_outlined),
+                        label: Text('Hombre')),
+                    ButtonSegment(
+                        value: ListaGeneros.femenino,
+                        icon: Icon(Icons.girl_outlined),
+                        label: Text('Mujer')),
                   ],
-                  selected: <ListaGeneros>{ generos },
+                  selected: <ListaGeneros>{generos},
                 ),
                 const SizedBox(height: 30),
                 TextButton.icon(
                   onPressed: () {
-                  return ;
-                }, icon: const Icon(Icons.date_range_outlined), label: const Text('Fecha de nacimiento'),),
-
+                    return;
+                  },
+                  icon: const Icon(Icons.date_range_outlined),
+                  label: const Text('Fecha de nacimiento'),
+                ),
               ],
             ),
           ),
