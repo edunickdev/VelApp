@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vel_app/presentation/user/models/user_model.dart';
 
-final listaGenerosProvider = StateProvider((ref) => generos);
+final listaGenerosProvider = StateProvider((ref) => ListaGeneros);
 
 final generoSeleccionado =
     StateNotifierProvider<GeneroListNotifier, UserBasicInfo>(

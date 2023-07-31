@@ -3,13 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vel_app/presentation/shared/widgets/custom_text_input.dart';
-import 'package:vel_app/presentation/user/providers/basic_info_provider.dart';
+import 'package:vel_app/presentation/user/models/user_model.dart';
 import 'package:vel_app/presentation/user/providers/user_providers.dart';
 
 class InfoBasicScreen extends ConsumerWidget {
+
   static String name = 'basics';
 
-  // final String title;
+  // final String title;pereme
 
   const InfoBasicScreen({super.key});
 
@@ -17,7 +18,8 @@ class InfoBasicScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final String titleAppbar = ref.watch(titleAppbarProvider);
-
+    final generos = ref.watch(listGenerosProvider);
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(titleAppbar),
@@ -29,35 +31,36 @@ class InfoBasicScreen extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Column(
               children: [
-                const Row(
-                  children: [
-                    Expanded(
-                        child: CustomTextInput('Ingresa tu altura',
-                            heightCursor: 23,
-                            keyboardType: TextInputType.number,
-                            alignText: TextAlign.left,
-                            customIcon: Icon(Icons.height_outlined))),
-                    SizedBox(width: 30),
-                    Expanded(
-                        child: CustomTextInput('Ingresa tu peso',
-                            heightCursor: 23,
-                            keyboardType: TextInputType.number,
-                            alignText: TextAlign.left,
-                            customIcon: Icon(Icons.monitor_weight))),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: const Card(
+                    child: Icon( Icons.camera_alt_outlined ),
+                  )
+                ) ,
+                const CustomTextInput('Ingresa tu altura',
+                    heightCursor: 23,
+                    keyboardType: TextInputType.number,
+                    alignText: TextAlign.left,
+                    customIcon: Icon(Icons.height_outlined)),
+                const CustomTextInput('Ingresa tu peso',
+                    heightCursor: 23,
+                    keyboardType: TextInputType.number,
+                    alignText: TextAlign.left,
+                    customIcon: Icon(Icons.monitor_weight)),
+                const SizedBox(height: 30),
+                SegmentedButton(
+                  segments: const [
+                    ButtonSegment(value: ListaGeneros.masculino, icon: Icon(Icons.man_2_outlined), label: Text('Hombre')),
+                    ButtonSegment(value: ListaGeneros.femenino, icon: Icon(Icons.girl_outlined), label: Text('Mujer')),
                   ],
+                  selected: <ListaGeneros>{ generos },
                 ),
-                DropdownButton<String>(
-                  value: generoSeleccionado as String,
-                  hint: Text(generoSeleccionado as String),
-                  items: ((genero) {
-                    return DropdownMenuItem<String>(value: genero, child: Text(genero),);
-                  }).toList(),
-                  onChanged: ( genero ) {
-                    if ( genero != null) {
-                      generoSeleccionado = genero; 
-                    }
-                  },
-                ),
+                const SizedBox(height: 30),
+                TextButton.icon(
+                  onPressed: () {
+                  return ;
+                }, icon: const Icon(Icons.date_range_outlined), label: const Text('Fecha de nacimiento'),),
+
               ],
             ),
           ),
@@ -66,4 +69,3 @@ class InfoBasicScreen extends ConsumerWidget {
     );
   }
 }
-

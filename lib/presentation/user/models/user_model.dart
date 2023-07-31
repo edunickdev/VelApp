@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-  List<String> generos = [ 'hombre', 'mujer', 'indefinido' ];
+enum ListaGeneros { masculino, femenino, otro }
 
 class User {
   final UserRegister userRegister;
@@ -18,7 +18,6 @@ class UserRegister {
 }
 
 class UserBasicInfo {
-  
 
   final Image foto;
   final DateTime fechaNacimiento;
