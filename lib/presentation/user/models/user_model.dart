@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum ListaGeneros { masculino, femenino, otro }
+enum ListaGeneros { masculino, femenino }
 
 class User {
   final UserRegister userRegister;

@@ -1,22 +1,23 @@
 // pido informacion basica como, altura, edad, genero, peso
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:vel_app/presentation/shared/widgets/custom_text_input.dart';
-import 'package:vel_app/presentation/user/models/user_model.dart';
 import 'package:vel_app/presentation/user/providers/user_providers.dart';
+import 'package:vel_app/presentation/user/widgets/custom_segmented_button.dart';
+
 
 class InfoBasicScreen extends ConsumerWidget {
   static String name = 'basics';
-
-  // final String title;
 
   const InfoBasicScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String titleAppbar = ref.watch(titleAppbarProvider);
-    final generos = ref.watch(listGenerosProvider);
+
+    final String titleAppbar = ref.watch( titleAppbarProvider );
 
     return Scaffold(
       appBar: AppBar(
@@ -45,27 +46,7 @@ class InfoBasicScreen extends ConsumerWidget {
                     alignText: TextAlign.left,
                     customIcon: Icon(Icons.monitor_weight)),
                 const SizedBox(height: 30),
-                SegmentedButton(
-                  segments: const [
-                    ButtonSegment(
-                        value: ListaGeneros.masculino,
-                        icon: Icon(Icons.man_2_outlined),
-                        label: Text('Hombre')),
-                    ButtonSegment(
-                        value: ListaGeneros.femenino,
-                        icon: Icon(Icons.girl_outlined),
-                        label: Text('Mujer')),
-                  ],
-                  selected: <ListaGeneros>{generos},
-                ),
-                const SizedBox(height: 30),
-                TextButton.icon(
-                  onPressed: () {
-                    return;
-                  },
-                  icon: const Icon(Icons.date_range_outlined),
-                  label: const Text('Fecha de nacimiento'),
-                ),
+                const CustomSegmentedButton(),
               ],
             ),
           ),
@@ -74,3 +55,6 @@ class InfoBasicScreen extends ConsumerWidget {
     );
   }
 }
+
+
+

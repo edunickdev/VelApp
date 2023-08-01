@@ -8,5 +8,7 @@ final statusInfoBasicProvider = StateProvider<bool>((ref) => false);
 final statusInfoMedicProvider = StateProvider<bool>((ref) => false);
 final statusInfoHabitsProvider = StateProvider<bool>((ref) => false);
 
-final listGenerosProvider = StateProvider<ListaGeneros>((ref) => ListaGeneros.masculino );
+final listaGenerosProvider = StateProvider<ListaGeneros>((ref) {
+  return ListaGeneros.masculino;
+} );
 
