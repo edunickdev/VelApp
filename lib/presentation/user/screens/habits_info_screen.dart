@@ -65,18 +65,7 @@ class InfoHabitsScreen extends ConsumerWidget {
                   children: [
                     const Expanded(
                         child: Text('Selecciona un día que deseas entrenar')),
-                    DropdownButton(
-                      value: diaSeleccionado,
-                      items: diasSemana
-                          .map((dia) =>
-                              DropdownMenuItem(
-                                value: dia, 
-                                child: Text(dia)))
-                          .toList(),
-                      onChanged: ( value ) {
-                        ref.read(diaSeleccionadoProvider.notifier).state = value!;
-                      },
-                    ),
+                    CustomDropDownButton(itemProvider: diaSeleccionado, listaItems: diasSemana),
                   ],
                 ),
               )
@@ -84,6 +73,31 @@ class InfoHabitsScreen extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomDropDownButton<T> extends ConsumerWidget {
+
+  final List<String> listaItems;
+  final StateProvider<int, String, > itemProvider;
+
+  const CustomDropDownButton({super.key, required this.itemProvider, required this.listaItems});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    return DropdownButton(
+      value: itemProvider,
+      items: listaItems
+          .map((item) =>
+              DropdownMenuItem(
+                value: item, 
+                child: Text(item)))
+          .toList(),
+      onChanged: ( value ) {
+        ref.read(itemProvider.notifier).state = value! as T;
+      },
     );
   }
 }
