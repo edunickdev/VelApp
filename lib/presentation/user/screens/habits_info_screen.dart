@@ -12,7 +12,16 @@ class InfoHabitsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String titleAppbar = ref.watch(titleAppbarProvider);
     final List<int> horasEntrenamiento = [1, 2, 3, 4, 5];
-    int horaSeleccionada = ref.watch(horaSeleccionadaProvider);
+    final int horaSeleccionada = ref.watch(horaSeleccionadaProvider);
+    final String diaSeleccionado = ref.watch(diaSeleccionadoProvider);
+    final List<String> diasSemana = [
+      'Lunes',
+      'Martes',
+      'Miercoles',
+      'Jueves',
+      'Viernes',
+      'Sábado'
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -31,16 +40,16 @@ class InfoHabitsScreen extends ConsumerWidget {
                             'Elige la cantidad de horas que desea entrenar a la semana.')),
                     const SizedBox(width: 30),
                     DropdownButton(
-                      value: horaSeleccionada,
                       padding: const EdgeInsets.symmetric(vertical: 20),
+                      value: horaSeleccionada,
                       items: horasEntrenamiento
-                          .map((e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e == 1 ? '$e hora' : '$e horas')))
+                          .map((hora) => DropdownMenuItem(
+                              value: hora,
+                              child: Text(
+                                  hora == 1 ? '$hora hora' : '$hora horas')))
                           .toList(),
                       onChanged: (value) {
-                        ref.read(horaSeleccionadaProvider.notifier).state =
-                            value!;
+                        ref.read(horaSeleccionadaProvider.notifier).state = value!;
                       },
                     ),
                   ],
@@ -49,15 +58,34 @@ class InfoHabitsScreen extends ConsumerWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 35),
                 child: CustomTextInput(
-                  
-                    'Ingrese la cantidad de días a entrenar en la semana',
-                    heightCursor: 23,
-                    keyboardType: TextInputType.number,
-                    alignText: TextAlign.left,
-                    customIcon: Icon(Icons.calendar_today),
-                    validations: [
-                      
-                    ]),
+                  'Ingrese la cantidad de días a entrenar en la semana',
+                  heightCursor: 23,
+                  keyboardType: TextInputType.number,
+                  alignText: TextAlign.left,
+                  customIcon: Icon(Icons.calendar_today),
+                ),
+              ),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: Row(
+                  children: [
+                    const Expanded(
+                        child: Text('Selecciona un día que deseas entrenar')),
+                    DropdownButton(
+                      value: diaSeleccionado,
+                      items: diasSemana
+                          .map((dia) =>
+                              DropdownMenuItem(
+                                value: dia, 
+                                child: Text(dia)))
+                          .toList(),
+                      onChanged: (value) {
+                        ref.read(diaSeleccionadoProvider.notifier).state = value!;
+                      },
+                    ),
+                  ],
+                ),
               )
             ],
           ),
