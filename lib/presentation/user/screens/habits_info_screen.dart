@@ -10,6 +10,7 @@ class InfoHabitsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final String titleAppbar = ref.watch(titleAppbarProvider);
     final List<int> horasEntrenamiento = [1, 2, 3, 4, 5];
     final int horaSeleccionada = ref.watch(horaSeleccionadaProvider);
@@ -63,9 +64,8 @@ class InfoHabitsScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Row(
                   children: [
-                    const Expanded(
-                        child: Text('Selecciona un día que deseas entrenar')),
-                    CustomDropDownButton(itemProvider: diaSeleccionado, listaItems: diasSemana),
+                    const Expanded( child: Text('Selecciona un día que deseas entrenar')),
+                    // CustomDropDownButton(itemProvider: diaSeleccionado, listaItems: diasSemana),
                   ],
                 ),
               )
@@ -80,7 +80,7 @@ class InfoHabitsScreen extends ConsumerWidget {
 class CustomDropDownButton<T> extends ConsumerWidget {
 
   final List<String> listaItems;
-  final StateProvider<int, String, > itemProvider;
+  final StateProvider<T> itemProvider;
 
   const CustomDropDownButton({super.key, required this.itemProvider, required this.listaItems});
 
