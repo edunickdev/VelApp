@@ -12,3 +12,5 @@ final listaGenerosProvider = StateProvider<ListaGeneros>((ref) {
   return ListaGeneros.masculino;
 } );
 
+final horaSeleccionadaProvider = StateProvider<int>((ref) => 1);
+

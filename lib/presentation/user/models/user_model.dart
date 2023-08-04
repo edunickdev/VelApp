@@ -4,7 +4,7 @@ enum ListaGeneros { masculino, femenino }
 
 class User {
   final UserRegister userRegister;
-  final UserBasicInfo userBasicInfo;
+  final UserBasicInfo userBasicInfo; 
 
   const User(this.userRegister, this.userBasicInfo);
 }
@@ -33,4 +33,14 @@ class UserBasicInfo {
     edad = fechaActual.year - fechaNacimiento.year;
     return edad;
   }
+}
+
+
+class UserHabitsInfo {
+  final int horasEntrenamiento;
+  final int? cantDias = 1;
+  final List<String> diasEntrenamiento = [];
+  final String jornadaEntrenamiento;
+
+  UserHabitsInfo({required this.horasEntrenamiento, required this.jornadaEntrenamiento});
 }

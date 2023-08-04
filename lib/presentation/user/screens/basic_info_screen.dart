@@ -8,7 +8,6 @@ import 'package:vel_app/presentation/shared/widgets/custom_text_input.dart';
 import 'package:vel_app/presentation/user/providers/user_providers.dart';
 import 'package:vel_app/presentation/user/widgets/custom_segmented_button.dart';
 
-
 class InfoBasicScreen extends ConsumerWidget {
   static String name = 'basics';
 
@@ -16,37 +15,45 @@ class InfoBasicScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    final String titleAppbar = ref.watch( titleAppbarProvider );
+    final String titleAppbar = ref.watch(titleAppbarProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(titleAppbar),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(5),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(1),
+        child: FloatingActionButton(
+          child: const Icon(Icons.save_outlined),
+          onPressed: () {},
+        ),
+      ),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(5),
         child: Form(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: const Card(
-                      child: Icon(Icons.camera_alt_outlined),
-                    )),
-                const CustomTextInput('Ingresa tu altura',
+                CircleAvatar(
+                  radius: 80,
+                  child: Icon(Icons.camera_alt_outlined),
+                ),
+                SizedBox(height: 30),
+                CustomTextInput('Ingresa tu altura',
                     heightCursor: 23,
                     keyboardType: TextInputType.number,
                     alignText: TextAlign.left,
                     customIcon: Icon(Icons.height_outlined)),
-                const CustomTextInput('Ingresa tu peso',
+                SizedBox(height: 30),
+                CustomTextInput('Ingresa tu peso',
                     heightCursor: 23,
                     keyboardType: TextInputType.number,
                     alignText: TextAlign.left,
                     customIcon: Icon(Icons.monitor_weight)),
-                const SizedBox(height: 30),
-                const CustomSegmentedButton(),
+                SizedBox(height: 30),
+                CustomSegmentedButton(),
               ],
             ),
           ),
@@ -55,6 +62,3 @@ class InfoBasicScreen extends ConsumerWidget {
     );
   }
 }
-
-
-
