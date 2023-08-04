@@ -14,14 +14,7 @@ class InfoHabitsScreen extends ConsumerWidget {
     final List<int> horasEntrenamiento = [1, 2, 3, 4, 5];
     final int horaSeleccionada = ref.watch(horaSeleccionadaProvider);
     final String diaSeleccionado = ref.watch(diaSeleccionadoProvider);
-    final List<String> diasSemana = [
-      'Lunes',
-      'Martes',
-      'Miercoles',
-      'Jueves',
-      'Viernes',
-      'Sábado'
-    ];
+    final List<String> diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado'];
 
     return Scaffold(
       appBar: AppBar(
@@ -80,7 +73,7 @@ class InfoHabitsScreen extends ConsumerWidget {
                                 value: dia, 
                                 child: Text(dia)))
                           .toList(),
-                      onChanged: (value) {
+                      onChanged: ( value ) {
                         ref.read(diaSeleccionadoProvider.notifier).state = value!;
                       },
                     ),

@@ -9,7 +9,7 @@ final statusInfoMedicProvider = StateProvider<bool>(( ref ) => false);
 final statusInfoHabitsProvider = StateProvider<bool>(( ref ) => false);
 
 final horaSeleccionadaProvider = StateProvider<int>(( ref ) => 1);
-final diaSeleccionadoProvider = StateProvider<String>(( ref ) => '');
+final diaSeleccionadoProvider = StateProvider<String>(( ref ) => 'Lunes');
 
 final listaGenerosProvider = StateProvider<ListaGeneros>(( ref ) {
   return ListaGeneros.masculino;
