@@ -10,6 +10,11 @@ final statusInfoHabitsProvider = StateProvider<bool>(( ref ) => false);
 
 final horaSeleccionadaProvider = StateProvider<int>(( ref ) => 1);
 final diaSeleccionadoProvider = StateProvider<String>(( ref ) => 'Lunes');
+final cantDiasEntrenamientoProvider = StateProvider<int>((ref) => 1);
+final listaDiasEntrenamientoProvider = StateProvider<List<String>>((ref) {
+  final numberOfDropdowns = ref.watch(cantDiasEntrenamientoProvider);
+  return List.generate(numberOfDropdowns, (index) => 'Lunes');
+});
 
 final listaGenerosProvider = StateProvider<ListaGeneros>(( ref ) {
   return ListaGeneros.masculino;

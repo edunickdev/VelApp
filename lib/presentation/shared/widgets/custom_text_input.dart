@@ -10,6 +10,8 @@ class CustomTextInput extends StatelessWidget {
   final Icon customIcon;
   final List<Function>? validations;
   final TextEditingController? controller;
+  final ValueChanged<String>? onChange;
+  final String? initialValue;
 
   const CustomTextInput(
     this.label, {
@@ -21,12 +23,15 @@ class CustomTextInput extends StatelessWidget {
     this.password = false,
     required this.customIcon, 
     this.validations, 
-    this.controller,
+    this.controller, 
+    this.onChange, 
+    this.initialValue,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       autofocus: autofocus,
       cursorHeight: heightCursor,
       keyboardType: keyboardType,
@@ -41,6 +46,7 @@ class CustomTextInput extends StatelessWidget {
         }
         return null;
       },
+      onChanged: onChange,
     );
   }
 

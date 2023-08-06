@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:vel_app/presentation/shared/widgets/custom_text_input.dart';
+
+import 'package:vel_app/presentation/shared/shared_widgets.dart';
 import 'package:vel_app/presentation/user/providers/user_providers.dart';
 
 class InfoHabitsScreen extends ConsumerWidget {
@@ -10,12 +11,11 @@ class InfoHabitsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
+
+    final String cantDiasEntrenamiento = ref.watch(cantDiasEntrenamientoProvider).toString();
     final String titleAppbar = ref.watch(titleAppbarProvider);
     final List<int> horasEntrenamiento = [1, 2, 3, 4, 5];
     final int horaSeleccionada = ref.watch(horaSeleccionadaProvider);
-    final String diaSeleccionado = ref.watch(diaSeleccionadoProvider);
-    final List<String> diasSemana = [ 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado' ];
 
     return Scaffold(
       appBar: AppBar(
@@ -49,33 +49,33 @@ class InfoHabitsScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 35),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: CustomTextInput(
+                  initialValue: cantDiasEntrenamiento,
                   'Ingrese la cantidad de días a entrenar en la semana',
                   heightCursor: 23,
                   keyboardType: TextInputType.number,
                   alignText: TextAlign.left,
-                  customIcon: Icon(Icons.calendar_today),
+                  customIcon: const Icon(Icons.calendar_today),
+                  onChange: (value) {
+                    final valueParsed = int.tryParse(value);
+                    if (valueParsed == 0 || valueParsed == null) {
+                      ref.read(cantDiasEntrenamientoProvider.notifier).state = 1;
+                    }
+                    if (valueParsed != null) {
+                      ref.read(cantDiasEntrenamientoProvider.notifier).state = valueParsed;
+                    }
+                  },
                 ),
               ),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: Row(
+                child: Column(
                   children: [
-                    const Expanded(
-                        child: Text('Selecciona un día que deseas entrenar')),
-                    DropdownButton(
-                      value: diaSeleccionado,
-                      items: diasSemana.map(
-                        (dia) => DropdownMenuItem(
-                          value: dia,
-                          child: Text(dia)) 
-                        ).toList(),
-                      onChanged: (value) { 
-                        ref.read( diaSeleccionadoProvider.notifier ).state = value!;
-                      },)
+                    const Text('De acuerdo al valor ingresado en el punto anterior, seleccione el o los días que tendra disponible para entrenar'),
+                    DynamicDropDownButtons(),
                   ],
                 ),
               )
@@ -86,3 +86,4 @@ class InfoHabitsScreen extends ConsumerWidget {
     );
   }
 }
+
