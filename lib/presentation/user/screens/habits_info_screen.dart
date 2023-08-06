@@ -10,12 +10,12 @@ class InfoHabitsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
+    
     final String titleAppbar = ref.watch(titleAppbarProvider);
     final List<int> horasEntrenamiento = [1, 2, 3, 4, 5];
     final int horaSeleccionada = ref.watch(horaSeleccionadaProvider);
     final String diaSeleccionado = ref.watch(diaSeleccionadoProvider);
-    final List<String> diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado'];
+    final List<String> diasSemana = [ 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado' ];
 
     return Scaffold(
       appBar: AppBar(
@@ -64,8 +64,18 @@ class InfoHabitsScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Row(
                   children: [
-                    const Expanded( child: Text('Selecciona un día que deseas entrenar')),
-                    // CustomDropDownButton(itemProvider: diaSeleccionado, listaItems: diasSemana),
+                    const Expanded(
+                        child: Text('Selecciona un día que deseas entrenar')),
+                    DropdownButton(
+                      value: diaSeleccionado,
+                      items: diasSemana.map(
+                        (dia) => DropdownMenuItem(
+                          value: dia,
+                          child: Text(dia)) 
+                        ).toList(),
+                      onChanged: (value) { 
+                        ref.read( diaSeleccionadoProvider.notifier ).state = value!;
+                      },)
                   ],
                 ),
               )
@@ -73,31 +83,6 @@ class InfoHabitsScreen extends ConsumerWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomDropDownButton<T> extends ConsumerWidget {
-
-  final List<String> listaItems;
-  final StateProvider<T> itemProvider;
-
-  const CustomDropDownButton({super.key, required this.itemProvider, required this.listaItems});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-
-    return DropdownButton(
-      value: itemProvider,
-      items: listaItems
-          .map((item) =>
-              DropdownMenuItem(
-                value: item, 
-                child: Text(item)))
-          .toList(),
-      onChanged: ( value ) {
-        ref.read(itemProvider.notifier).state = value! as T;
-      },
     );
   }
 }
